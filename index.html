@@ -224,9 +224,22 @@ let showInDisplay = x => {
 }
 
 let calc = _ => {
+    let expression = displayBox.innerText.trim();
+
     
-    if(!operators.includes(displayBox.innerText[displayBox.innerText.length - 1])){
-        displayBox.innerText = eval(displayBox.innerText)
+    if (expression === "13810126*1" || expression === "13810126×1") {
+        alert("قربون تاریخ تودت بشمااا،عشق من ❤️");
+       
+    }
+
+   
+    if (!operators.includes(expression[expression.length - 1])) {
+        try {
+            let result = eval(expression);
+            displayBox.innerText = Number.isInteger(result) ? result : result.toFixed(4);
+        } catch (err) {
+            displayBox.innerText = "خطا";
+        }
     }
 }
 
@@ -248,3 +261,4 @@ keyPad.addEventListener("click",_=>{
 </body>
 
 </html>
+
